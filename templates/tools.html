@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Tools & Resources{% endblock %}
+
+{% block content %}
+<section class="tools-header">
+    <div class="container">
+        <h1>Tools & Resources</h1>
+        <p>Browse our collection of practical tools for digital heritage preservation</p>
+    </div>
+</section>
+
+<section class="tools-filter">
+    <div class="container">
+        <div class="filter-options">
+            <button class="filter-btn active" data-filter="all">All Tools</button>
+            <button class="filter-btn" data-filter="documentation">Documentation</button>
+            <button class="filter-btn" data-filter="engagement">Engagement</button>
+            <button class="filter-btn" data-filter="standards">Standards</button>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search tools..." id="tool-search">
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+</section>
+
+<section class="tools-grid">
+    <div class="container">
+        <div class="tools-container">
+            {% for tool in tools %}
+            <div class="tool-card" data-category="{{ tool.category.lower() }}">
+                <div class="tool-card-content">
+                    <h3>{{ tool.name }}</h3>
+                    <span class="tool-category">{{ tool.category }}</span>
+                    <p>{{ tool.description }}</p>
+                    <a href="{{ tool.link }}" class="btn btn-small">View Tool</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="toolkit-cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Can't find what you need?</h2>
+            <p>Our team can help you identify the right tools and approaches for your specific heritage preservation project.</p>
+            <a href="{{ url_for('contact') }}" class="btn">Contact Our Experts</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const toolCards = document.querySelectorAll('.tool-card');
+    const searchInput = document.getElementById('tool-search');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.dataset.filter;
+            
+            // Filter cards
+            toolCards.forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Search functionality
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        
+        toolCards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const description = card.querySelector('p').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

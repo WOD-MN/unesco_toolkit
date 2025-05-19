@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Sampada Archives: | {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/unesco-logo.png') }}" alt="UNESCO Logo">
+                <div class="title-group">
+                    <h1>Project Sampada Archives</h1>
+                    <p class="slogan">Digital Toolkit for Cultural Heritage Preservation</p>
+                </div>
+            </div>
+        </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('tools') }}">Tools</a></li>
+                    <li><a href="{{ url_for('best_practices') }}">Best Practices</a></li>
+                    <li><a href="{{ url_for('case_studies') }}">Case Studies</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>About the Toolkit</h3>
+                    <p>Providing guidance and tools for digitizing and preserving intangible and tangible heritage worldwide.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{{ url_for('tools') }}">Tools & Resources</a></li>
+                        <li><a href="{{ url_for('best_practices') }}">Best Practices</a></li>
+                        <li><a href="{{ url_for('case_studies') }}">Success Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>Bagmati UNESCO Club<br>
+                    www.bagmatiunescoclub.org</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bagmati UNESCO Club. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

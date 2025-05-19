@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}Best Practices{% endblock %}
+
+{% block content %}
+<section class="practices-header">
+    <div class="container">
+        <h1>Best Practices</h1>
+        <p>For Heritage Conservation Across the Globe!</p>
+    </div>
+</section>
+
+<section class="practice-categories">
+    <div class="container">
+        <div class="category-tabs">
+            <button class="tab-btn active" data-tab="digitization">Digitization</button>
+            <button class="tab-btn" data-tab="metadata">Metadata</button>
+            <button class="tab-btn" data-tab="community">Community Engagement</button>
+            <button class="tab-btn" data-tab="preservation">Digital Preservation</button>
+        </div>
+    </div>
+</section>
+
+<section class="practice-content">
+    <div class="container">
+        <div class="tab-content active" id="digitization">
+            <h2>Digitization Best Practices</h2>
+            <div class="practice-item">
+                <h3>Oral History Documentation</h3>
+                <ul>
+                    <li>Record in lossless formats (WAV, FLAC) at minimum 44.1kHz sample rate</li>
+                    <li>Include detailed contextual metadata about interviewee and context</li>
+                    <li>Store master files separately from access copies</li>
+                    <li>Create transcripts with timecodes for important sections</li>
+                </ul>
+            </div>
+            <div class="practice-item">
+                <h3>3D Object Scanning</h3>
+                <ul>
+                    <li>Use appropriate resolution based on object size and detail</li>
+                    <li>Capture from multiple angles with sufficient overlap</li>
+                    <li>Include scale reference in scans</li>
+                    <li>Document lighting conditions and equipment used</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="metadata">
+            <h2>Metadata Standards</h2>
+            <div class="practice-item">
+                <h3>Recommended Standards</h3>
+                <ul>
+                    <li>Use Dublin Core for basic descriptive metadata</li>
+                    <li>Implement METS for complex digital objects</li>
+                    <li>Follow PREMIS for preservation metadata</li>
+                    <li>Adopt CIDOC CRM for cultural heritage documentation</li>
+                </ul>
+            </div>
+            <div class="practice-item">
+                <h3>File Naming Conventions</h3>
+                <ul>
+                    <li>Use consistent, meaningful naming patterns</li>
+                    <li>Include date in YYYYMMDD format when relevant</li>
+                    <li>Avoid special characters and spaces</li>
+                    <li>Implement version control in filenames</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="community">
+            <h2>Community Engagement</h2>
+            <div class="practice-item">
+                <h3>Participatory Documentation</h3>
+                <ul>
+                    <li>Involve community members in the documentation process</li>
+                    <li>Respect indigenous knowledge protocols</li>
+                    <li>Provide training on documentation techniques</li>
+                    <li>Establish clear agreements about access and use</li>
+                </ul>
+            </div>
+            <div class="practice-item">
+                <h3>Ethical Considerations</h3>
+                <ul>
+                    <li>Obtain informed consent for documentation</li>
+                    <li>Respect cultural sensitivities and restrictions</li>
+                    <li>Establish protocols for culturally sensitive materials</li>
+                    <li>Provide mechanisms for ongoing community control</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="preservation">
+            <h2>Digital Preservation</h2>
+            <div class="practice-item">
+                <h3>File Formats</h3>
+                <ul>
+                    <li>Use open, standardized formats when possible</li>
+                    <li>Maintain master files in lossless formats</li>
+                    <li>Create access copies in common formats</li>
+                    <li>Document all format decisions</li>
+                </ul>
+            </div>
+            <div class="practice-item">
+                <h3>Storage and Backup</h3>
+                <ul>
+                    <li>Implement the 3-2-1 backup rule (3 copies, 2 media types, 1 offsite)</li>
+                    <li>Use checksums for file integrity verification</li>
+                    <li>Plan for regular format migration</li>
+                    <li>Document all preservation actions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="download-section">
+    <div class="container">
+        <div class="download-content">
+            <h2>Download Complete Guidelines</h2>
+            <p>Get UNESCO's comprehensive best practices manual covering all aspects of digital heritage preservation.</p>
+            <a href="{{ url_for('static', filename='images/a.pdf') }}" class="btn" download>
+                <i class="fas fa-download"></i> Download PDF
+              </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Show corresponding content
+            const tabId = this.dataset.tab;
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h2>Preserving Cultural Heritage for Future Generations</h2>
+            <p>Guidance and tools for digitizing and preserving intangible and tangible heritage worldwide.</p>
+            <a href="{{ url_for('tools') }}" class="btn">Explore Tools</a>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">What We Offer</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-book-open"></i>
+                <h3>Best Practices</h3>
+                <p>Comprehensive guidelines for digital documentation of cultural heritage.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-tools"></i>
+                <h3>Practical Tools</h3>
+                <p>Ready-to-use tools and resources for heritage preservation.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Community Engagement</h3>
+                <p>Methods for involving local communities in preservation efforts.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-file-alt"></i>
+                <h3>Metadata Standards</h3>
+                <p>Internationally recognized standards for heritage documentation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="highlight-case-study">
+    <div class="container">
+        <div class="highlight-content">
+            <h2>Featured Case Study</h2>
+            <h3>Immersive Digital Preservation of Mustang's Architectural Caves</h3>
+            <p>This initiative proposes a scalable AR/VR platform to digitally preserve and showcase over 10,000 architectural caves in Mustang, Nepal, starting with 3D virtual tours using drone photogrammetry and LiDAR. It supports future expansions like AR apps, VR modules for education, and integration with global heritage platforms. By enabling continuous updates and open collaboration, the project ensures long-term conservation while positioning Nepal as a leader in digital heritage innovation.</p>
+            <a href="{{ url_for('case_studies') }}" class="btn">View All Case Studies</a>
+        </div>
+        <div class="highlight-image">
+            <img src="{{ url_for('static', filename='images/cave.jpg') }}" alt="Oral History Preservation">
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <div class="container">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for the latest tools, case studies, and best practices in digital heritage preservation.</p>
+        <form id="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit" class="btn">Subscribe</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Case Studies{% endblock %}
+
+{% block content %}
+<section class="case-studies-header">
+    <div class="container">
+        <h1>Case Studies</h1>
+        <p>Real-world examples of digital heritage preservation in action</p>
+    </div>
+</section>
+
+<section class="case-studies-grid">
+    <div class="container">
+        <div class="case-studies-container">
+            {% for study in case_studies %}
+            <div class="case-study-card">
+                <div class="case-study-image">
+                    <img src="{{ url_for('static', filename='images/' + study.image) }}" alt="{{ study.title }}">
+                </div>
+                <div class="case-study-content">
+                    <span class="location">{{ study.location }}</span>
+                    <h3>{{ study.title }}</h3>
+                    <p>{{ study.description }}</p>
+                    <a href="#" class="btn btn-small">Read Full Story</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="submit-case-study">
+    <div class="container">
+        <div class="submit-content">
+            <h2>Share Your Story</h2>
+            <p>Have you used our toolkit to preserve cultural heritage? We'd love to feature your project as a case study.</p>
+            <a href="{{ url_for('contact') }}" class="btn">Submit Your Case Study</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<section class="contact-header">
+    <div class="container">
+        <h1>Contact Our Team</h1>
+        <p>Get in touch with our digital heritage experts for guidance and support</p>
+    </div>
+</section>
+
+<section class="contact-form-section">
+    <div class="container">
+        <div class="contact-form-container">
+            {% if success %}
+            <div class="success-message">
+                <i class="fas fa-check-circle"></i>
+                <h3>Thank you for your message!</h3>
+                <p>We'll get back to you as soon as possible.</p>
+            </div>
+            {% else %}
+            <form method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="organization">Organization (Optional)</label>
+                    <input type="text" id="organization" name="organization">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+            {% endif %}
+        </div>
+        
+        <div class="contact-info">
+            <h3>Other Ways to Reach Us</h3>
+            <div class="contact-method">
+                <i class="fas fa-envelope"></i>
+                <p>contact@bagmatiunescoclub.org</p>
+            </div>
+            <div class="contact-method">
+                <i class="fas fa-phone"></i>
+                <p>+977 985 5033 294</p>
+            </div>
+            <div class="contact-method">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Hetauda<br>
+                Makawanpur 44107, Nepal </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="experts-section">
+    <div class="container">
+        <h2>Our Expert Team</h2>
+        <div class="experts-grid">
+            <div class="expert-card">
+                <img src="{{ url_for('static', filename='images/dai.jpg') }}" alt="Nischal Baniya">
+                <h3>Er. Nishcal Baniya</h3>
+                <p>Chairman</p>
+                <p>Expertise: Engineering, Research and Development</p>
+            </div>
+            <div class="expert-card">
+                <img src="{{ url_for('static', filename='images/savyata.PNG') }}" alt="Savyata Poudel">
+                <h3>Savyata Poudel</h3>
+                <p>Co-Chairman</p>
+                <p>Expertise: Business Administration </p>
+            </div>
+            <div class="expert-card">
+                <img src="{{ url_for('static', filename='images/saiman.jpg') }}" alt="">
+                <h3>Savyata Poudel</h3>
+                <p>Secretary</p>
+                <p>Expertise:Information Technology, STEAM, IoT</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
